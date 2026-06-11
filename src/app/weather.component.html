@@ -1,0 +1,35 @@
+<section class="weather-card">
+  <h1>Weather App</h1>
+  <p class="subtitle">Type a city name and search for mock weather.</p>
+
+  <div class="search-row">
+    <input
+      type="text"
+      name="cityName"
+      [(ngModel)]="cityName"
+      placeholder="Enter city name"
+      autocomplete="off"
+    />
+    <button type="button" (click)="searchWeather()">Search</button>
+  </div>
+
+  <div class="result" *ngIf="weatherData; else emptyState">
+    <img
+      class="weather-icon"
+      [src]="weatherData.icon"
+      [alt]="weatherData.condition + ' weather icon'"
+      title="Weather icon"
+    />
+
+    <div class="details">
+      <p><span>City:</span> {{ weatherData.city }}</p>
+      <p><span>Temperature:</span> {{ weatherData.temperature }}&deg;C</p>
+      <p><span>Condition:</span> {{ weatherData.condition }}</p>
+      <p><span>Humidity:</span> {{ weatherData.humidity }}%</p>
+    </div>
+  </div>
+
+  <ng-template #emptyState>
+    <p class="placeholder">Enter a city and click Search to show weather details.</p>
+  </ng-template>
+</section>
